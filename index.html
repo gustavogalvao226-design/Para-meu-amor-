@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Dia das Mulheres ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#0d0d0d;
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* CORAÇÕES */
+.heart{
+position:fixed;
+bottom:-20px;
+color:#ff4d88;
+animation: subir 6s linear infinite;
+font-size:20px;
+}
+
+@keyframes subir{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-100vh);opacity:0;}
+}
+
+.container{
+max-width:500px;
+margin:auto;
+padding:20px;
+}
+
+/* CARROSSEL */
+.carousel{
+position:relative;
+height:420px;
+overflow:hidden;
+border-radius:20px;
+}
+
+.carousel img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transition:opacity 1s;
+}
+
+.carousel img.active{
+opacity:1;
+}
+
+.title{
+position:absolute;
+top:20px;
+left:20px;
+font-size:26px;
+font-weight:bold;
+z-index:2;
+}
+
+/* INFO */
+.info{
+background:#1b1b1b;
+padding:20px;
+border-radius:20px;
+margin-top:-60px;
+}
+
+.counter{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:20px;
+}
+
+.box{
+background:#2a2a2a;
+padding:15px;
+border-radius:15px;
+}
+
+.box span{
+font-size:22px;
+font-weight:bold;
+}
+
+/* PLAYER */
+.music{
+margin-top:30px;
+}
+
+/* MENSAGEM */
+.message{
+background:linear-gradient(135deg,#ff2e6c,#ff4f8b);
+padding:30px;
+border-radius:20px;
+margin-top:30px;
+}
+
+.message p{
+font-size:17px;
+line-height:1.6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Feliz Dia das Mulheres amor ❤️</h2>
+
+<div class="carousel">
+<div class="title">Minha melhor escolha</div>
+<img src="foto1.jpg" class="active">
+<img src="foto2.jpg">
+</div>
+
+<div class="info">
+<h2>Gustavo e Nádia Lopes Bueno</h2>
+<p>Juntos desde 17/11/2024</p>
+
+<div class="counter">
+<div class="box"><span id="anos">0</span><p>Anos</p></div>
+<div class="box"><span id="meses">0</span><p>Meses</p></div>
+<div class="box"><span id="dias">0</span><p>Dias</p></div>
+<div class="box"><span id="horas">0</span><p>Horas</p></div>
+<div class="box"><span id="minutos">0</span><p>Minutos</p></div>
+<div class="box"><span id="segundos">0</span><p>Segundos</p></div>
+</div>
+</div>
+
+<div class="music">
+<iframe style="border-radius:12px"
+src="https://open.spotify.com/embed/track/6oVBNnqV4o9qYw4F1Gd2Sx"
+width="100%"
+height="152"
+frameBorder="0"
+allowfullscreen=""
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+</div>
+
+<div class="message">
+<h2>Mensagem especial 💌</h2>
+<p>
+Meu amor,<br><br>
+
+Hoje, no Dia das Mulheres, quero te dizer o quanto você é especial pra mim! Cada momento ao seu lado me faz sentir mais realizado, mais vivo. Você ilumina meus dias e me faz ser uma versão melhor de mim mesmo. Obrigado por ser essa mulher incrível, minha cura, minha princesa. Te amar é o que me completa. Para sempre.<br><br>
+
+Você é a razão pela qual eu sorrio todos os dias, a música que toca no meu coração, o aconchego que me envolve em noites frias. Com você, tudo é mais bonito, mais colorido, mais cheio de vida. Te ter ao meu lado é o maior presente que eu poderia pedir.<br><br>
+
+Quero passar o resto da minha vida ao seu lado, rindo, chorando, sonhando e vivendo todas as aventuras com você. Você é a minha melhor escolha, a minha melhor amiga, a minha alma gêmea.<br><br>
+
+Para sempre e sempre, meu amor 💕
+</p>
+</div>
+
+</div>
+
+<script>
+/* CARROSSEL */
+let index = 0
+const slides = document.querySelectorAll(".carousel img")
+
+setInterval(()=>{
+slides[index].classList.remove("active")
+index++
+if(index >= slides.length){ index = 0 }
+slides[index].classList.add("active")
+},3000)
+
+/* CONTADOR */
+const startDate = new Date("2024-11-17T00:00:00")
+
+function atualizar(){
+const agora = new Date()
+const diff = agora - startDate
+
+const segundos = Math.floor(diff/1000)%60
+const minutos = Math.floor(diff/1000/60)%60
+const horas = Math.floor(diff/1000/60/60)%24
+
+const diasTotais = Math.floor(diff/1000/60/60/24)
+const anos = Math.floor(diasTotais/365)
+const meses = Math.floor((diasTotais%365)/30)
+const dias = (diasTotais%365)%30
+
+document.getElementById("anos").innerText = anos
+document.getElementById("meses").innerText = meses
+document.getElementById("dias").innerText = dias
+document.getElementById("horas").innerText = horas
+document.getElementById("minutos").innerText = minutos
+document.getElementById("segundos").innerText = segundos
+}
+
+setInterval(atualizar,1000)
+
+/* CORAÇÕES */
+function criarCoracao(){
+const coracao = document.createElement("div")
+coracao.classList.add("heart")
+coracao.innerHTML="❤"
+coracao.style.left=Math.random()*100+"vw"
+coracao.style.fontSize=(Math.random()*20+10)+"px"
+document.body.appendChild(coracao)
+setTimeout(()=>{ coracao.remove() },6000)
+}
+
+setInterval(criarCoracao,500)
+</script>
+
+</body>
+</html>
